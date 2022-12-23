@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: digital;
+            font-weight: 900;
+            font-style: bold;
+        }
+
+        ::selection
+        {
+            background-color: transparent;
+        }
+
+        @font-face {
+            font-family: digital;
+            src: url(../Font/digital_font.TTF);
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(0, 0, 0);
+            display: grid;
+            place-items: center;
+        }
+
+        .center {
+            width: 30rem;
+            height: 8rem;
+            display: grid;
+            place-items: center;
+            letter-spacing: 1rem;
+            font-size: 2rem;
+            border: 5px solid yellow;
+            border-radius: 1rem;
+            color: rgb(196, 255, 21);
+            text-shadow: 0 0 50px rgb(196, 255, 21);
+            box-shadow: 0 0 90px rgb(196, 255, 21);
+            animation: clock 5s linear infinite;
+            transition: all .8s;
+        }
+
+        @keyframes clock {
+            0% {
+                color: aqua;
+                border: 5px solid aqua;
+                text-shadow: 0 0 50px aqua;
+                box-shadow: 0 0 90px aqua;
+            }
+
+            20% {
+                color: rgb(255, 246, 68);
+                border: 5px solid rgb(255, 246, 68);
+                text-shadow: 0 0 50px rgb(255, 246, 68);
+                box-shadow: 0 0 90px rgb(255, 246, 68);
+            }
+
+            40% {
+                border: 5px solid rgb(12, 255, 105);
+                color: rgb(12, 255, 105);
+                text-shadow: 0 0 50px rgb(12, 255, 105);
+                box-shadow: 0 0 90px rgb(12, 255, 105);
+            }
+
+            60% {
+                border: 5px solid rgb(254, 60, 218);
+                color: rgb(254, 60, 218);
+                text-shadow: 0 0 50px rgb(254, 60, 218);
+                box-shadow: 0 0 90px rgb(254, 60, 218);
+            }
+
+            80% {
+                border: 5px solid rgb(255, 152, 68);
+                color: rgb(255, 152, 68);
+                text-shadow: 0 0 50px rgb(255, 152, 68);
+                box-shadow: 0 0 90px rgb(255, 152, 68);
+            }
+
+            100% {
+                color: aqua;
+                border: 5px solid aqua;
+                text-shadow: 0 0 50px aqua;
+                box-shadow: 0 0 90px aqua;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <strong>
+            <h1 id="show"></h1>
+        </strong>
+    </div>
+
+    <script>
+        const getTime = () => {
+            let show = document.getElementById("show");
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+
+            show.innerHTML = `${hour}:${min}:${sec}`;
+        }
+        setInterval(() => {
+            getTime();
+        },1000)
+    </script>
+</body>
+
+</html>
